@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,13 @@ public class ItemService {
 	    return this.itemRepository.save(item);
 	}
 	
-	public void delete(Integer id) {
-		this.itemRepository.deleteById(id);
+	public Item delete(Integer id) {
+		Item item = this.findById(id);
+		item.setDeletedAt(LocalDateTime.now());
+		return this.itemRepository.save(item);
+	}
+	
+	public List<Item> findByDeletedAtIsNull(){
+		return this.itemRepository.findByDeletedAtIsNull();
 	}
 }

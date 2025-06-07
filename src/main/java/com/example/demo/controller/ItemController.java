@@ -27,7 +27,8 @@ public class ItemController {
 
 	@GetMapping
 	public String index(Model model) {
-		List<Item> items = this.itemService.findAll();
+//		List<Item> items = this.itemService.findAll();
+		List<Item> items = this.itemService.findByDeletedAtIsNull();
 		model.addAttribute("items", items);
 		return "item/index";
 	}
