@@ -13,7 +13,7 @@
 			<label>商品名</label>
 		</div>
 		<div>
-			
+
 			<input type="text" th:field="*{name}" placeholder="商品名を入力してください">
 		</div>
 		<div>
@@ -21,6 +21,15 @@
 		</div>
 		<div>
 			<input type="number" th:field="*{price}" placeholder="価格を入力してください">
+		</div>
+		<div>
+			<label>カテゴリ名</label>
+		</div>
+		<div>
+			<select th:field="*{categoryId}">
+				<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+				</option>
+			</select>
 		</div>
 		<div>
 			<input type="submit" name="send" value="登録する">
